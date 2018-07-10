@@ -15,7 +15,9 @@ class LeaderBoard extends Component {
         {leaderBoardMembers.map((member, index) => (
           <Fragment key={member.id}>
             {index < 3 && (
-              <p className='leaderBoardPlace'>{index+1} place</p>
+              <div className='leaderBoardPlace'>
+                <span>{index+1} place</span>
+              </div>
             )}
             <div className='leaderBoardMember'>
               <div className='leaderBoardAvatar'>
@@ -25,7 +27,7 @@ class LeaderBoard extends Component {
                 />
               </div>
               <div className='leaderBoardInfo'>
-                <h1>{member.name}</h1>
+                <h2>{member.name}</h2>
                 <br/>
                 <div className='leaderBoardScoreSection'>
                   <span>Answered questions</span>
@@ -35,6 +37,7 @@ class LeaderBoard extends Component {
                   <span>Created questions</span>
                   <span className='float-right'>{member.totalCreatedQuestions}</span>
                 </div>
+                <br/>
                 <br/>
                 <br/>
               </div>

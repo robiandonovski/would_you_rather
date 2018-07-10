@@ -33,9 +33,6 @@ export function handleAddQuestion(optionOneText, optionTwoText, author) {
   return (dispatch) => {
     dispatch(showLoading())
 
-    // todo remove
-    // console.log('saveQuestion', optionOneText, optionTwoText, author)
-
     return saveQuestion({
       optionOneText,
       optionTwoText,
@@ -49,9 +46,6 @@ export function handleAddQuestion(optionOneText, optionTwoText, author) {
 export function handleAnswerQuestion(authedUserId, questionId, answer) {
   return (dispatch) => {
     dispatch(showLoading())
-
-    // todo remove
-    // console.log('saveAnswer', authedUserId, questionId, answer)
 
     return saveAnswer({
       authedUser: authedUserId,

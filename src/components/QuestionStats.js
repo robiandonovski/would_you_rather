@@ -14,7 +14,7 @@ class QuestionStats extends Component {
           <h3>Asked by {authorName}</h3>
         </div>
         <div className='content-box-body'>
-          <div className='content-box-question-left center'>
+          <div className='content-box-question-left answered center'>
             <img
               src={authorAvatarURL}
               alt={`Avatar of ${authorName}`}

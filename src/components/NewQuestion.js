@@ -8,6 +8,7 @@ class NewQuestion extends Component {
   state = {
     optionOneText: '',
     optionTwoText: '',
+    errorMessage: '',
     toHomePage: false
   }
 
@@ -24,6 +25,10 @@ class NewQuestion extends Component {
         optionTwoText: text
       }))
     }
+
+    this.setState(() => ({
+      errorMessage: ''
+    }))
   }
 
   handleSubmit = (e) => {
@@ -32,8 +37,16 @@ class NewQuestion extends Component {
     const { optionOneText, optionTwoText } = this.state
     const { dispatch, authedUserId } = this.props
 
-    if(optionOneText === '' || optionTwoText === '' || optionOneText === optionTwoText){
-      //todo error message
+    if(optionOneText === '' || optionTwoText === '' ){
+      this.setState(() => ({
+        errorMessage: 'Please fill the both options before submit!'
+      }))
+      return
+    }
+    if(optionOneText === optionTwoText){
+      this.setState(() => ({
+        errorMessage: 'Option one and option two should not be the same!'
+      }))
       return
     }
 
@@ -47,7 +60,7 @@ class NewQuestion extends Component {
   }
 
   render() {
-    const { optionOneText, optionTwoText, toHomePage } = this.state
+    const { optionOneText, optionTwoText, errorMessage, toHomePage } = this.state
     const { isAuthed } = this.props
 
     if (isAuthed === false) {
@@ -85,6 +98,9 @@ class NewQuestion extends Component {
                 onChange={this.handleChange} />
             </div>
             <br/>
+            {errorMessage !== '' && (
+              <div className='validation-error'>{errorMessage}</div>
+            )}
             <div className='center'>
               <button type='submit' className='question-answer-submit'>Submit</button>
             </div>

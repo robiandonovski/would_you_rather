@@ -2,11 +2,16 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import QuestionStats from './QuestionStats'
 import QuestionAnswer from './QuestionAnswer'
+import { Redirect } from 'react-router-dom'
 
 class QuestionDetails extends Component {
 
   render() {
-    const { questionId, questionIsAnswered } = this.props
+    const { isAuthed, questionId, questionIsAnswered } = this.props
+
+    if (isAuthed === false) {
+      return <Redirect to='/login' />
+    }
 
     return (
       <Fragment>
@@ -22,11 +27,15 @@ class QuestionDetails extends Component {
 
 function mapStateToProps({ authedUserId, users }, props) {
   const { id } = props.match.params
+
+  const isAuthed = authedUserId !== null && authedUserId !== ''
+
   let authedUser = users[authedUserId]
 
   return {
+    isAuthed: isAuthed,
     questionId: id,
-    questionIsAnswered: authedUser.answers.hasOwnProperty(id) === true
+    questionIsAnswered: isAuthed && authedUser.answers.hasOwnProperty(id) === true
   }
 }
 

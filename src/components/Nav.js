@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import CurrentAuthedUser from './CurrentAuthedUser';
+import { withRouter } from 'react-router-dom'
 
 class Nav extends Component {
   render() {
@@ -43,4 +44,4 @@ function mapStateToProps({ authedUserId }) {
   }
 }
 
-export default connect(mapStateToProps)(Nav)
+export default withRouter(connect(mapStateToProps)(Nav))

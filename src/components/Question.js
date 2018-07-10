@@ -20,7 +20,7 @@ class Question extends Component {
             />
           </div>
           <div className='content-box-question-right'>
-            <h3>Would you rather</h3>
+            <h2>Would you rather</h2>
             <br/>
             <p>{shortInfo}</p>
             <br/>

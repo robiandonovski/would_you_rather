@@ -42,10 +42,10 @@ class Login extends Component {
   }
 
   render() {
-    const { availableUsers } = this.props
+    const { isAuthed, availableUsers } = this.props
     const { selectedUserId, showMessage, toHome } = this.state
 
-    if (toHome === true) {
+    if (isAuthed === true || toHome === true) {
       return <Redirect to='/' />
     }
 
@@ -56,6 +56,7 @@ class Login extends Component {
           <p>Please sign in to continue</p>
         </div>
         <div className='content-box-body'>
+          <br />
           <select onChange={this.handleChange} value={selectedUserId}>
             <option value="" selected disabled>Choose user</option>
             {
@@ -66,17 +67,18 @@ class Login extends Component {
           <br />
           <br />
           {showMessage && (
-            <p>Choose user from the dropdown and then sign in</p>
+            <div className='validation-error'>Choose user from the dropdown and then sign in!</div>
           )}
-          <button className='center' onClick={this.handleClick}>Sign in</button>
+          <button className='login-button' onClick={this.handleClick}>Sign in</button>
         </div>
       </div>
     )
   }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ authedUserId, users }) {
   return {
+    isAuthed: authedUserId !== null && authedUserId !== '',
     availableUsers: users !== null
       ? Object.keys(users).map((id) => (
         {
