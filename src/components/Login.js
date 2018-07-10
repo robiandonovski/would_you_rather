@@ -10,8 +10,6 @@ class Login extends Component {
     toHome: false
   }
 
-  compo
-
   handleChange = (e) => {
     const selectedUserId = e.target.value
 

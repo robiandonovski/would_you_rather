@@ -20,7 +20,6 @@ class App extends Component {
         <Fragment>
           <LoadingBar style={{ backgroundColor: '#76AEAB' }} />
           <div className='container'>
-
             {this.props.loading === false && (
               <div>
                 <Nav />

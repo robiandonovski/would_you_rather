@@ -1,12 +1,15 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { handleLogout } from '../actions/authedUser'
+import { withRouter } from 'react-router-dom'
 
 class CurrentAuthedUser extends Component {
   handleLogoutClick = () => {
     const { dispatch } = this.props
 
     dispatch(handleLogout())
+
+    this.props.history.push(`/login`)
   }
 
   render() {
@@ -35,4 +38,4 @@ function mapStateToProps({ authedUserId, users }) {
   }
 }
 
-export default connect(mapStateToProps)(CurrentAuthedUser)
+export default withRouter(connect(mapStateToProps)(CurrentAuthedUser))

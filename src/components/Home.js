@@ -4,6 +4,16 @@ import { Redirect } from 'react-router-dom'
 import Question from './Question'
 
 class Home extends Component {
+  state={
+    activeTab: 'unansweredQuestions'
+  }
+
+  handleTabChange = (tabName) => {
+    this.setState(() => ({
+      activeTab: tabName
+    }))
+  }
+
   render() {
     const { isAuthed, unansweredQuestions, answeredQuestions } = this.props
 
@@ -11,17 +21,32 @@ class Home extends Component {
       return <Redirect to='/login' />
     }
 
+    const { activeTab } = this.state
+
     return (
-      <div>
-        {unansweredQuestions.map((questionId) => (
-          <Question key={questionId} id={questionId} />
-        ))}
-
-        Answered:
-
-        {answeredQuestions.map((questionId) => (
-          <Question key={questionId} id={questionId} />
-        ))}
+      <div className='page-content'>
+        <div className='tabs'>
+          <div className={`tab ${ activeTab === 'unansweredQuestions' ? 'active' : '' }`}
+              onClick={() => this.handleTabChange('unansweredQuestions')}>
+            <h4>Unanswered Questions</h4>
+          </div>
+          <div className={`tab ${ activeTab === 'answeredQuestions' ? 'active' : '' }`}
+               onClick={() => this.handleTabChange('answeredQuestions')}>
+            <h4>Answered Questions</h4>
+          </div>
+        </div>
+        <div className='questions'>
+        {activeTab === 'unansweredQuestions'
+          ?
+            unansweredQuestions.map((questionId) => (
+              <Question key={questionId} id={questionId} />
+            ))
+          :
+            answeredQuestions.map((questionId) => (
+              <Question key={questionId} id={questionId} />
+            ))
+          }
+        </div>
       </div>
     )
   }
@@ -35,10 +60,6 @@ function mapStateToProps({ authedUserId, users, questions }) {
 
   if(isAuthed === true){
     let authedUser = users[authedUserId]
-
-    console.log(authedUser)
-
-    console.log(Object.keys(questions))
 
     unansweredQuestions = Object.keys(questions)
       .filter((questionId) => (
@@ -60,37 +81,7 @@ function mapStateToProps({ authedUserId, users, questions }) {
       .map((question) => (
         question.id
       ))
-
-    // answeredQuestions = authedUser.answers
-    //   .filter((questionId) => (
-    //     authedUser.answers[questionId] !== null
-    //   ))
-    //   .map((questionId) => (
-    //     questions[questionId]
-    //   ))
-    //   .sort((a, b) => b.timestamp -a.timestamp)
-
-
-    // unansweredQuestions = authedUser.questions
-    // .filter((questionId) => (
-    //   authedUser.answers[questionId] === null
-    // ))
-    // .map((questionId) => (
-    //   questions[questionId]
-    // ))
-    // .sort((a, b) => b.timestamp -a.timestamp)
-
-    // answeredQuestions = authedUser.questions
-    //   .filter((questionId) => (
-    //     authedUser.answers[questionId] !== null
-    //   ))
-    //   .map((questionId) => (
-    //     questions[questionId]
-    //   ))
-    //   .sort((a, b) => b.timestamp -a.timestamp)
   }
-  console.log(unansweredQuestions)
-  console.log(answeredQuestions)
 
   return {
     isAuthed,
