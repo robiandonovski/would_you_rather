@@ -12,9 +12,7 @@ export default function users(state = {}, action) {
     case ANSWER_QUESTION:
       const { authedUserId, questionId, answer } = action
 
-      // console.log("state:", state)
-
-      const toReturn = {
+      return {
         ...state,
         [authedUserId]: {
           ...state[authedUserId],
@@ -24,10 +22,6 @@ export default function users(state = {}, action) {
           }
         }
       }
-
-      // console.log(toReturn)
-
-      return toReturn
     default:
       return state
   }

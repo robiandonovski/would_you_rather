@@ -2,8 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { handleAddQuestion } from '../actions/questions'
+import PropTypes from "prop-types";
 
 class NewQuestion extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    isAuthed: PropTypes.bool.isRequired,
+    authedUserId: PropTypes.string.isRequired
+  };
 
   state = {
     optionOneText: '',

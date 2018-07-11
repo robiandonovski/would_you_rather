@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
+import PropTypes from "prop-types";
 import LoadingBar from 'react-redux-loading'
 import Home from './Home'
 import Nav from './Nav'
@@ -11,6 +12,10 @@ import QuestionDetails from './QuestionDetails';
 import Login from './Login';
 
 class App extends Component {
+  static propTypes = {
+    loading: PropTypes.bool.isRequired
+  };
+
   componentDidMount() {
     this.props.dispatch(handleInitialData())
   }

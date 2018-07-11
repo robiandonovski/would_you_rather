@@ -1,12 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from "prop-types";
 
 class QuestionStats extends Component {
 
+  static propTypes = {
+    authorName: PropTypes.string.isRequired,
+    authorAvatarURL: PropTypes.string.isRequired,
+    optionOne: PropTypes.string.isRequired,
+    optionTwo: PropTypes.string.isRequired,
+    optionOneVotes: PropTypes.number.isRequired,
+    optionTwoVotes: PropTypes.number.isRequired,
+    selectedOption: PropTypes.oneOf(['optionOne', 'optionTwo']).isRequired
+  };
+
   render() {
     const { authorName, authorAvatarURL, optionOne, optionTwo, optionOneVotes, optionTwoVotes, selectedOption } = this.props
-    const totalVotes = optionOneVotes + optionTwoVotes
 
+    const totalVotes = optionOneVotes + optionTwoVotes
 
     return (
       <div className="content-box">

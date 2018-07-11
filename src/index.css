@@ -364,3 +364,17 @@ li {
   background-color: rgba(223,182,103,1);
 }
 /* leaderBoard */
+
+/* QuestionNotFound */
+
+.questionNotFound{
+  margin-top: 100px;
+  font-size: 30px;
+}
+.link-to-home a{
+  color: #34bca7;
+}
+.link-to-home a:hover{
+  color: #279181;
+}
+/* QuestionNotFound */

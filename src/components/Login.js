@@ -2,8 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { handleSetAuthedUser } from '../actions/authedUser'
+import PropTypes from "prop-types";
 
 class Login extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    isAuthed: PropTypes.bool.isRequired,
+    availableUsers: PropTypes.arrayOf(PropTypes.object).isRequired
+  };
+
   state = {
     selectedUserId: '',
     showMessage: false,
@@ -58,7 +66,7 @@ class Login extends Component {
         <div className='content-box-body'>
           <br />
           <select onChange={this.handleChange} value={selectedUserId}>
-            <option value="" selected disabled>Choose user</option>
+            <option value="" disabled>Choose user</option>
             {
               availableUsers.map((user) => (
                 <option key={user.id} value={user.id}>{user.name}</option>

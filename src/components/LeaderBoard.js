@@ -1,8 +1,15 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import PropTypes from "prop-types";
 
 class LeaderBoard extends Component {
+
+  static propTypes = {
+    isAuthed: PropTypes.bool.isRequired,
+    leaderBoardMembers: PropTypes.arrayOf(PropTypes.object).isRequired
+  };
+
   render() {
     const { isAuthed, leaderBoardMembers } = this.props
 

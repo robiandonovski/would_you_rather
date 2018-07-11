@@ -2,8 +2,16 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { handleLogout } from '../actions/authedUser'
 import { withRouter } from 'react-router-dom'
+import PropTypes from "prop-types";
 
 class CurrentAuthedUser extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    name: PropTypes.string.isRequired,
+    avatarURL: PropTypes.string.isRequired
+  };
+
   handleLogoutClick = () => {
     const { dispatch } = this.props
 

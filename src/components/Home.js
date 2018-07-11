@@ -2,8 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import Question from './Question'
+import PropTypes from "prop-types";
 
 class Home extends Component {
+
+  static propTypes = {
+    isAuthed: PropTypes.bool.isRequired,
+    unansweredQuestions: PropTypes.arrayOf(PropTypes.string).isRequired,
+    answeredQuestions: PropTypes.arrayOf(PropTypes.string).isRequired
+  };
+
   state={
     activeTab: 'unansweredQuestions'
   }

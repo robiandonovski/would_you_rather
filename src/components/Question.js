@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import PropTypes from "prop-types";
 
 class Question extends Component {
+
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    authorName: PropTypes.string.isRequired,
+    authorAvatarURL: PropTypes.string.isRequired,
+    shortInfo: PropTypes.string.isRequired,
+  }
+
   render() {
     const { id, authorName, authorAvatarURL, shortInfo } = this.props
 

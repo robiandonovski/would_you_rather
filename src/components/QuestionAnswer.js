@@ -1,8 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAnswerQuestion } from '../actions/questions'
+import PropTypes from "prop-types";
 
 class QuestionAnswer extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    authedUserId: PropTypes.string.isRequired,
+    questionId: PropTypes.string.isRequired,
+    authorName: PropTypes.string.isRequired,
+    authorAvatarURL: PropTypes.string.isRequired,
+    optionOne: PropTypes.string.isRequired,
+    optionTwo: PropTypes.string.isRequired
+  };
 
   state = {
     selectedOption: 'optionOne'
