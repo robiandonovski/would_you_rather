@@ -10,9 +10,6 @@ export default function questions(state = {}, action) {
     case ADD_QUESTION:
       const { question } = action
 
-      console.log("add_question state:", state)
-      console.log("add_question question:", question)
-
       return {
         ...state,
         [question.id]: question,
@@ -20,12 +17,7 @@ export default function questions(state = {}, action) {
     case ANSWER_QUESTION:
       const { authedUserId, questionId, answer } = action
 
-      console.log("state question:", state)
-
-      console.log("answer:", answer)
-
-
-      const toReturn = {
+      return {
         ...state,
         [questionId]:{
           ...state[questionId],
@@ -43,11 +35,6 @@ export default function questions(state = {}, action) {
           }
         }
       }
-
-      console.log("toReturn question:", toReturn)
-
-      return toReturn
-
     default:
       return state
   }
