@@ -59,6 +59,7 @@ To build and deploy:
     │   ├── QuestionAnswer.js # displays on question details page when the question is not answered
     │   ├── QuestionStats.js # displays the statistics for answered question
     │   ├── QuestionNotFound.js # displays 404 not found question when the id is not in store questions
+    │   ├── Error404.js # displays 404 page not found and link to homepage
     ├── utils
     │   ├── _DATA.js # data provided by Udacity. Works like a backend storage
     │   ├── api.js # used to call methods, instead of calling rest API services, it is writing in _DATA.js

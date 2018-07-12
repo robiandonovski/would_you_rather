@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function QuestionNotFound() {
+export default function error404() {
   return (
     <div className='questionNotFound center'>
       <div className='error-message'>
-        404, question not found
+        404, page not found
       </div>
       <br />
       <div className='link-to-home'>
