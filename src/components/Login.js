@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { handleSetAuthedUser } from '../actions/authedUser'
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 class Login extends Component {
 
@@ -32,8 +32,7 @@ class Login extends Component {
     const { selectedUserId } = this.state
     const { dispatch } = this.props
 
-    if(selectedUserId !== '')
-    {
+    if (selectedUserId !== '') {
       dispatch(handleSetAuthedUser(selectedUserId))
 
       this.setState(() => ({
@@ -42,7 +41,7 @@ class Login extends Component {
         toHome: true
       }))
     }
-    else{
+    else {
       this.setState(() => ({
         showMessage: true
       }))

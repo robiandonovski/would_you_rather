@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { handleLogout } from '../actions/authedUser'
 import { withRouter } from 'react-router-dom'
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 class CurrentAuthedUser extends Component {
 

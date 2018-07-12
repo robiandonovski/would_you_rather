@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { handleAddQuestion } from '../actions/questions'
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 class NewQuestion extends Component {
 
@@ -22,12 +22,11 @@ class NewQuestion extends Component {
   handleChange = (e) => {
     const text = e.target.value
 
-    if(e.target.name === 'optionOneText')
-    {
+    if (e.target.name === 'optionOneText') {
       this.setState(() => ({
         optionOneText: text
       }))
-    }else{
+    } else {
       this.setState(() => ({
         optionTwoText: text
       }))
@@ -44,13 +43,13 @@ class NewQuestion extends Component {
     const { optionOneText, optionTwoText } = this.state
     const { dispatch, authedUserId } = this.props
 
-    if(optionOneText === '' || optionTwoText === '' ){
+    if (optionOneText === '' || optionTwoText === '') {
       this.setState(() => ({
         errorMessage: 'Please fill the both options before submit!'
       }))
       return
     }
-    if(optionOneText === optionTwoText){
+    if (optionOneText === optionTwoText) {
       this.setState(() => ({
         errorMessage: 'Option one and option two should not be the same!'
       }))
@@ -74,7 +73,7 @@ class NewQuestion extends Component {
       return <Redirect to='/login' />
     }
 
-    if(toHomePage === true){
+    if (toHomePage === true) {
       return <Redirect to='/' />
     }
 
@@ -104,7 +103,7 @@ class NewQuestion extends Component {
                 placeholder='Enter Option Two Text Here'
                 onChange={this.handleChange} />
             </div>
-            <br/>
+            <br />
             {errorMessage !== '' && (
               <div className='validation-error'>{errorMessage}</div>
             )}

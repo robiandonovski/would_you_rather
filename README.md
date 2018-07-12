@@ -32,9 +32,10 @@ To build and deploy:
     ├── index.css # Styles for your app.
     ├── index.js # This is the root of the app. Contains redux state and providers for the components.
     ├── actions
-    │   ├── authedUser.js # AuthedUser actions: SET_AUTHED_USER
-    │   ├── questions.js # Question actions: RECEIVE_QUESTIONS, ADD_QUESTION and ANSWER_QUESTION
-    │   ├── users.js # Users actions: RECEIVE_USERS
+    │   ├── types.js # Contains action types
+    │   ├── authedUser.js # AuthedUser actions
+    │   ├── questions.js # Question actions
+    │   ├── users.js # Users actions
     │   └── shared.js #
     ├── reducers
     │   ├── authedUser.js # AuthedUser reducer
@@ -52,6 +53,7 @@ To build and deploy:
     │   ├── Home.js # page which shows unanswered and answered questions
     │   ├── Question.js # question information displayed in lists of Home component
     │   ├── LeaderBoard.js # page which shows leader board with user's score
+    │   ├── LeaderBoardMember.js # dispalys one member from leader-board (stateless component)
     │   ├── NewQuestion.js # new question form
     │   ├── QuestionDetails.js # used to detect and display details page
     │   ├── QuestionAnswer.js # displays on question details page when the question is not answered

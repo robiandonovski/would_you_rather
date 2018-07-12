@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import PropTypes from "prop-types";
+import LeaderBoardMember from './LeaderBoardMember';
+import PropTypes from 'prop-types';
 
 class LeaderBoard extends Component {
 
@@ -20,43 +21,15 @@ class LeaderBoard extends Component {
     return (
       <div>
         {leaderBoardMembers.map((member, index) => (
-          <Fragment key={member.id}>
-            {index < 3 && (
-              <div className='leaderBoardPlace'>
-                <span>{index+1} place</span>
-              </div>
-            )}
-            <div className='leaderBoardMember'>
-              <div className='leaderBoardAvatar'>
-                <img
-                  src={member.avatarURL}
-                  alt={`Avatar of ${member.name}`}
-                />
-              </div>
-              <div className='leaderBoardInfo'>
-                <h2>{member.name}</h2>
-                <br/>
-                <div className='leaderBoardScoreSection'>
-                  <span>Answered questions</span>
-                  <span className='float-right'>{member.totalAnsweredQuestions}</span>
-                </div>
-                <div className='leaderBoardScoreSection'>
-                  <span>Created questions</span>
-                  <span className='float-right'>{member.totalCreatedQuestions}</span>
-                </div>
-                <br/>
-                <br/>
-                <br/>
-              </div>
-              <div className='leaderBoardScore'>
-                <br/>
-                <h3 className='center'>Score</h3>
-                <br/>
-                <p className='totalScore'>{member.totalPoints}</p>
-              </div>
-              <div className='clearfix'></div>
-            </div>
-          </Fragment>
+          <LeaderBoardMember
+            key={member.id}
+            place={index + 1}
+            name={member.name}
+            avatarURL={member.avatarURL}
+            totalAnsweredQuestions={member.totalAnsweredQuestions}
+            totalCreatedQuestions={member.totalCreatedQuestions}
+            totalPoints={member.totalPoints}
+          />
         ))}
       </div>
     )
@@ -65,10 +38,6 @@ class LeaderBoard extends Component {
 
 function mapStateToProps({ authedUserId, users, questions }) {
 
-  console.log("users", users)
-  console.log("questions", questions)
-
-
   const leaderBoardMembers = Object.keys(users).map((user) => (
     {
       ...users[user],
@@ -76,18 +45,16 @@ function mapStateToProps({ authedUserId, users, questions }) {
         .filter((question) => questions[question].author === user).length,
       totalAnsweredQuestions: Object.keys(questions)
         .filter((question) => questions[question].optionOne.votes.includes(user)
-                              || questions[question].optionTwo.votes.includes(user)).length
+          || questions[question].optionTwo.votes.includes(user)).length
     })
   )
-  .map((leaderBoardMember) => (
-    {
-      ...leaderBoardMember,
-      totalPoints: leaderBoardMember.totalCreatedQuestions + leaderBoardMember.totalAnsweredQuestions
-    }
-  ))
-  .sort((a, b) => b.totalPoints - a.totalPoints)
-
-  console.log("leaderBoard", leaderBoardMembers)
+    .map((leaderBoardMember) => (
+      {
+        ...leaderBoardMember,
+        totalPoints: leaderBoardMember.totalCreatedQuestions + leaderBoardMember.totalAnsweredQuestions
+      }
+    ))
+    .sort((a, b) => b.totalPoints - a.totalPoints)
 
   return {
     isAuthed: authedUserId !== null && authedUserId !== '',

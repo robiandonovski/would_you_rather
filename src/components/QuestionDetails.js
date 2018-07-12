@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import QuestionStats from './QuestionStats'
 import QuestionAnswer from './QuestionAnswer'
 import QuestionNotFound from './QuestionNotFound'
@@ -22,7 +22,7 @@ class QuestionDetails extends Component {
       return <Redirect to='/login' />
     }
 
-    if(questionNotExists === true){
+    if (questionNotExists === true) {
       return (
         <QuestionNotFound></QuestionNotFound>
       )
@@ -32,8 +32,8 @@ class QuestionDetails extends Component {
       <Fragment>
         {
           questionIsAnswered === true
-          ? <QuestionStats id={questionId} />
-          : <QuestionAnswer id={questionId} />
+            ? <QuestionStats id={questionId} />
+            : <QuestionAnswer id={questionId} />
         }
       </Fragment>
     )

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAnswerQuestion } from '../actions/questions'
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 class QuestionAnswer extends Component {
 
@@ -74,7 +74,7 @@ class QuestionAnswer extends Component {
                   onChange={this.handleChange} />
                 <span>{optionTwo}</span>
               </div>
-              <br/>
+              <br />
               <div className='center'>
                 <button type='submit' className='question-answer-submit'>Submit</button>
               </div>
@@ -92,7 +92,7 @@ function mapStateToProps({ authedUserId, users, questions }, props) {
 
   const question = questions[id]
 
-  console.log("authedUserId: ",authedUserId)
+  console.log("authedUserId: ", authedUserId)
 
   return {
     questionId: id,

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import Question from './Question'
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 class Home extends Component {
 
@@ -12,7 +12,7 @@ class Home extends Component {
     answeredQuestions: PropTypes.arrayOf(PropTypes.string).isRequired
   };
 
-  state={
+  state = {
     activeTab: 'unansweredQuestions'
   }
 
@@ -34,22 +34,22 @@ class Home extends Component {
     return (
       <div className='page-content'>
         <div className='tabs'>
-          <div className={`tab ${ activeTab === 'unansweredQuestions' ? 'active' : '' }`}
-              onClick={() => this.handleTabChange('unansweredQuestions')}>
+          <div className={`tab ${activeTab === 'unansweredQuestions' ? 'active' : ''}`}
+            onClick={() => this.handleTabChange('unansweredQuestions')}>
             <h4>Unanswered Questions</h4>
           </div>
-          <div className={`tab ${ activeTab === 'answeredQuestions' ? 'active' : '' }`}
-               onClick={() => this.handleTabChange('answeredQuestions')}>
+          <div className={`tab ${activeTab === 'answeredQuestions' ? 'active' : ''}`}
+            onClick={() => this.handleTabChange('answeredQuestions')}>
             <h4>Answered Questions</h4>
           </div>
         </div>
         <div className='questions'>
-        {activeTab === 'unansweredQuestions'
-          ?
+          {activeTab === 'unansweredQuestions'
+            ?
             unansweredQuestions.map((questionId) => (
               <Question key={questionId} id={questionId} />
             ))
-          :
+            :
             answeredQuestions.map((questionId) => (
               <Question key={questionId} id={questionId} />
             ))
@@ -66,7 +66,7 @@ function mapStateToProps({ authedUserId, users, questions }) {
   let unansweredQuestions = []
   let answeredQuestions = []
 
-  if(isAuthed === true){
+  if (isAuthed === true) {
     let authedUser = users[authedUserId]
 
     unansweredQuestions = Object.keys(questions)

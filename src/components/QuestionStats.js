@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 class QuestionStats extends Component {
 
@@ -34,7 +34,7 @@ class QuestionStats extends Component {
           </div>
           <div className='content-box-question-right'>
             <h2>Results: </h2>
-            <div className={`stats-option ${ selectedOption === 'optionOne' ? 'choosen' : '' }`}>
+            <div className={`stats-option ${selectedOption === 'optionOne' ? 'choosen' : ''}`}>
               <h3 className='optionText'>
                 {optionOne}
               </h3>
@@ -49,7 +49,7 @@ class QuestionStats extends Component {
                 <span className='yourChoiceIcon' title='Your choice'>&#9733;</span>
               }
             </div>
-            <div className={`stats-option ${ selectedOption === 'optionTwo' ? 'choosen' : '' }`}>
+            <div className={`stats-option ${selectedOption === 'optionTwo' ? 'choosen' : ''}`}>
               <h3 className='optionText'>
                 {optionTwo}
               </h3>

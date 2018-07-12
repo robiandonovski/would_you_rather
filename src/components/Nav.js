@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import CurrentAuthedUser from './CurrentAuthedUser';
 
 class Nav extends Component {

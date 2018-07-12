@@ -1,4 +1,4 @@
-export const RECEIVE_USERS = 'RECEIVE_USERS'
+import { RECEIVE_USERS } from './types'
 
 export function receiveUsers(users) {
   return {
@@ -6,4 +6,3 @@ export function receiveUsers(users) {
     users
   }
 }
-
