@@ -77,8 +77,6 @@ function mapStateToProps({ authedUserId, users, questions }, props) {
 
   const question = questions[id]
 
-  console.log(question)
-
   return {
     questionId: id,
     authedUserId: authedUserId,

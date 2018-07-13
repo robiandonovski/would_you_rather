@@ -44,8 +44,6 @@ class QuestionAnswer extends Component {
     const { authorName, authorAvatarURL, optionOne, optionTwo } = this.props
     const { selectedOption } = this.state
 
-    console.log(selectedOption)
-
     return (
       <div className="content-box">
         <div className='content-box-header'>
@@ -91,8 +89,6 @@ function mapStateToProps({ authedUserId, users, questions }, props) {
   const { id } = props
 
   const question = questions[id]
-
-  console.log("authedUserId: ", authedUserId)
 
   return {
     questionId: id,
